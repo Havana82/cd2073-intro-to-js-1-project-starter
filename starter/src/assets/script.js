@@ -81,7 +81,7 @@ const product3 = {name:"Strawberry",
 const products = [product1, product2, product3]
 
 
-const cart = [];
+let cart = [];
 
 function addProductToCart(num){
     products.map(function(product){if(product.productId===num){
@@ -94,16 +94,30 @@ function addProductToCart(num){
       
     }
   })
-    console.log('show');
+  
 }
 
-function increaseQuantity(){
-  console.log('show');
+function increaseQuantity(num){
+  cart.map(function(item){
+    if(item.productId === num){
+      item.quantity+=1;
+    }
+  })
 
 }
 
-function decreaseQuantity(){
-  console.log('show');
+function decreaseQuantity(num){
+  cart.map(function(item){
+    if(item.productId === num){
+      if(item.quantity===1){
+        cart = cart.filter(function(items){return items.productId !== num})
+        console.log(cart)
+      }
+      else{
+      item.quantity-=1;
+      }
+    }
+  })
 }
 
 function removeProductFromCart(){
