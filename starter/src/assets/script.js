@@ -61,16 +61,78 @@
    npm run test
 */
 
+
+const product1 = {name:"Cherry",
+                  price:40,
+                  quantity:0,
+                  productId:1,
+                  image:'../images/cherry.jpg'}
+
+const product2 = {name:"Orange",
+                  price:80,
+                  quantity:0,
+                  productId:2,
+                  image:'../images/orange.jpg'}
+const product3 = {name:"Strawberry",
+                  price:60,
+                  quantity:0,
+                  productId:3,
+                  image:'../images/strawberry.jpg'}
+const products = [product1, product2, product3]
+
+
+const cart = [];
+
+function addProductToCart(num){
+    products.map(function(product){if(product.productId===num){
+      if(cart.includes(product)){
+        product.quantity+=1
+      }
+      else{
+        cart.push(product);
+      }
+      
+    }
+  })
+    console.log('show');
+}
+
+function increaseQuantity(){
+  console.log('show');
+
+}
+
+function decreaseQuantity(){
+  console.log('show');
+}
+
+function removeProductFromCart(){
+  console.log('show');
+}
+
+function cartTotal(){
+  console.log('show');
+}
+
+function emptyCart(){
+  console.log('show');
+}
+
+function pay(){
+  console.log('show');
+}
+
+
 module.exports = {
-   products,
-   cart,
-   addProductToCart,
-   increaseQuantity,
-   decreaseQuantity,
-   removeProductFromCart,
-   cartTotal,
-   pay, 
-   emptyCart,
-   /* Uncomment the following line if completing the currency converter bonus */
-   // currency
+  products,
+  cart,
+  addProductToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeProductFromCart,
+  cartTotal,
+  pay, 
+  emptyCart,
+  /* Uncomment the following line if completing the currency converter bonus */
+  // currency
 }
