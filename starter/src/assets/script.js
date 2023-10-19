@@ -90,6 +90,7 @@ function addProductToCart(num){
       }
       else{
         cart.push(product);
+        product.quantity+=1;
       }
       
     }
@@ -111,7 +112,7 @@ function decreaseQuantity(num){
     if(item.productId === num){
       if(item.quantity===1){
         cart = cart.filter(function(items){return items.productId !== num})
-        console.log(cart)
+        
       }
       else{
       item.quantity-=1;
@@ -120,8 +121,13 @@ function decreaseQuantity(num){
   })
 }
 
-function removeProductFromCart(){
-  console.log('show');
+function removeProductFromCart(num){
+  cart.map(function(item){
+    if(item.productId === num){
+      item.quantity = 0;
+      cart = cart.filter(function(items){return items.productId !== num})
+    }
+  })
 }
 
 function cartTotal(){
