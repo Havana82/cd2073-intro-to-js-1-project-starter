@@ -131,11 +131,14 @@ function removeProductFromCart(num){
 }
 
 function cartTotal(){
-  console.log('show');
+  sum = 0;
+  cart.map(function(items){return sum+= (items.price * items.quantity)})
+  return sum;
 }
 
+
 function emptyCart(){
-  console.log('show');
+  cart = []
 }
 
 function pay(){
