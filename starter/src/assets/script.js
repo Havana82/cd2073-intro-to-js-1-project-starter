@@ -78,10 +78,15 @@ const product3 = {name:"Strawberry",
                   quantity:0,
                   productId:3,
                   image:'../images/strawberry.jpg'}
-const products = [product1, product2, product3]
+const product4 = {name:"Banana",
+                  price:50,
+                  quantity:0,
+                  productId:4,
+                  image:'../images/banana.jpg'}
+const products = [product1, product2, product3, product4]
 
 
-let cart = [];
+const cart = [];
 
 function addProductToCart(num){
     products.map(function(product){if(product.productId===num){
@@ -110,12 +115,14 @@ function increaseQuantity(num){
 function decreaseQuantity(num){
   cart.map(function(item){
     if(item.productId === num){
-      if(item.quantity===1){
-        cart = cart.filter(function(items){return items.productId !== num})
+      if(item.quantity>0){
+        item.quantity-=1;
+      
         
       }
-      else{
-      item.quantity-=1;
+      if(item.quantity===0){
+        indx = cart.indexOf(item);
+        cart.splice(indx,1)
       }
     }
   })
@@ -124,14 +131,15 @@ function decreaseQuantity(num){
 function removeProductFromCart(num){
   cart.map(function(item){
     if(item.productId === num){
+      indx = cart.indexOf(item);
+      cart.splice(indx,1);
       item.quantity = 0;
-      cart = cart.filter(function(items){return items.productId !== num})
     }
   })
 }
 
 function cartTotal(){
-  sum = 0;
+  let sum = 0;
   cart.map(function(items){return sum+= (items.price * items.quantity)})
   return sum;
 }
