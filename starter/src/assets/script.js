@@ -150,8 +150,9 @@ function emptyCart(){
 }
 
 function pay(amt){
-    price = cartTotal()
-    return amt - price;
+    const price = cartTotal()
+    let remainder = amt - price;
+    return remainder;
 }
 
 
