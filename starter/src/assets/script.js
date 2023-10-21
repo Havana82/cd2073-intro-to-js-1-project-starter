@@ -159,10 +159,18 @@ function emptyCart() {
       removeProductFromCart(product.productId);
   });
 }
-// calculates if amount paid is more or less than cart total
+// calculate if amount paid is more or less than cart total
+// declare global variable total
+let total = 0;
 function pay(amount){
     let price = cartTotal()
+    total += amount
+    // calculate remainder if amount is greater than total
     let remainder = amount - price;
+    if(remainder >= 0){
+      total = 0;
+      emptyCart();
+    }
     return remainder;
 }
 
