@@ -131,7 +131,7 @@ document.querySelector(".pay").addEventListener("click", (e) => {
     document.querySelector(".received").value = "";
     div.innerHTML = `
             <p>Cash Received: ${currencySymbol}${amount}</p>
-            <p>Remaining Balance: ${cashReturn}$</p>
+            <p>Remaining Balance: $${cashReturn}</p>
             <p>Please pay additional amount.</p>
             <hr/>
         `;
