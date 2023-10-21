@@ -149,8 +149,9 @@ function emptyCart(){
   cart = []
 }
 
-function pay(){
-  console.log('show');
+function pay(amt){
+    price = cartTotal()
+    return amt - price;
 }
 
 
