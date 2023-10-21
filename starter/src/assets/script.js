@@ -154,14 +154,15 @@ function cartTotal(){
 }
 
 // removes all products from cart
-function emptyCart(){
-  cart = []
+function emptyCart() {
+  cart.forEach(function (product) {
+      removeProductFromCart(product.productId);
+  });
 }
-
 // calculates if amount paid is more or less than cart total
-function pay(amt){
-    const price = cartTotal()
-    let remainder = amt - price;
+function pay(amount){
+    let price = cartTotal()
+    let remainder = amount - price;
     return remainder;
 }
 
