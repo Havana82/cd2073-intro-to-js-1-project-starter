@@ -61,7 +61,7 @@
    npm run test
 */
 
-
+// create product objects in variables
 const product1 = {name:"Cherry",
                   price:40,
                   quantity:0,
@@ -83,11 +83,14 @@ const product4 = {name:"Banana",
                   quantity:0,
                   productId:4,
                   image:'../images/banana.jpg'}
+
+// put product variables in a list
 const products = [product1, product2, product3, product4]
 
-
+// declare empty cart
 const cart = [];
 
+// adds product to cart and increases quantity if product already present
 function addProductToCart(num){
     products.map(function(product){if(product.productId===num){
       if(cart.includes(product)){
@@ -103,52 +106,59 @@ function addProductToCart(num){
   
 }
 
-function increaseQuantity(num){
+// helper function for mapping through cart
+function helper(num){
+  let product;
   cart.map(function(item){
     if(item.productId === num){
-      item.quantity+=1;
-    }
-  })
+      product = item;
+    }})
+  return product;
+  }
 
+// increases selected product by one
+function increaseQuantity(num){
+  let item = helper(num);
+  item.quantity += 1;
 }
 
+// decreases selected product by 1
 function decreaseQuantity(num){
-  cart.map(function(item){
-    if(item.productId === num){
-      if(item.quantity>0){
-        item.quantity-=1;
+  let item = helper(num);
+  if(item.quantity>0){
+    item.quantity-=1;
       
         
-      }
-      if(item.quantity===0){
-        indx = cart.indexOf(item);
-        cart.splice(indx,1)
-      }
-    }
-  })
+  }
+  if(item.quantity===0){
+    indx = cart.indexOf(item);
+    cart.splice(indx,1)
+  }
+  
 }
 
+// removes product from cart
 function removeProductFromCart(num){
-  cart.map(function(item){
-    if(item.productId === num){
-      indx = cart.indexOf(item);
-      cart.splice(indx,1);
-      item.quantity = 0;
-    }
-  })
+    let item = helper(num);
+    indx = cart.indexOf(item);
+    cart.splice(indx,1);
+    item.quantity = 0;
+
 }
 
+// calculates total price of items in cart
 function cartTotal(){
   let sum = 0;
   cart.map(function(items){return sum+= (items.price * items.quantity)})
   return sum;
 }
 
-
+// removes all products from cart
 function emptyCart(){
   cart = []
 }
 
+// calculates if amount paid is more or less than cart total
 function pay(amt){
     const price = cartTotal()
     let remainder = amt - price;
