@@ -140,7 +140,7 @@ function decreaseQuantity(num){
 // removes product from cart
 function removeProductFromCart(num){
     let item = helper(num);
-    indx = cart.indexOf(item);
+    const indx = cart.indexOf(item);
     cart.splice(indx,1);
     item.quantity = 0;
 
