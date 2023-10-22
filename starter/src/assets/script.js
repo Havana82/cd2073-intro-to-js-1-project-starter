@@ -131,7 +131,7 @@ function decreaseQuantity(num){
         
   }
   if(item.quantity===0){
-    indx = cart.indexOf(item);
+    const indx = cart.indexOf(item);
     cart.splice(indx,1)
   }
   
