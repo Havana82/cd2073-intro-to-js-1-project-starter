@@ -162,11 +162,12 @@ function emptyCart() {
 // calculate if amount paid is more or less than cart total
 // declare global variable total
 let total = 0;
+let price = 0;
 function pay(amount){
-    let price = cartTotal()
+    price = cartTotal()
     total += amount
     // calculate remainder if amount is greater than total
-    let remainder = amount - price;
+    const remainder = total - price;
     if(remainder >= 0){
       total = 0;
       emptyCart();
